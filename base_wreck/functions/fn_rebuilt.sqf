@@ -20,7 +20,7 @@ _hangars = X_JIPH getVariable QGVAR(wreck_hangars);
 _vehicle lock false;
 _vehicle allowDamage true;
 
-if (!isNil QMODULE(vehicle_menu)) then {
+if (!isNil QMODULE(menu_vehicle)) then {
     _vehicle setVariable [QGVAR(menu), true, true];
 };
 

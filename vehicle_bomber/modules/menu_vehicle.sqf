@@ -22,6 +22,6 @@ if !([_vehicle] call FUNC(THIS_MODULE,valid)) exitWith {false};
         default {"Talk: Intel"}
     },
     "bomber"
-] call FUNC(vehicle_menu,populate);
+] call FUNC(menu,populate);
 
 true

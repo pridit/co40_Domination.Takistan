@@ -33,7 +33,7 @@ if (isServer) then {
         _vehicle setVariable [QGVAR(spawn), position _vehicle, true];
     };
     
-    if (!isNil QMODULE(vehicle_menu)) then {
+    if (!isNil QMODULE(menu_vehicle)) then {
         if (isNil {_vehicle getVariable QGVAR(menu)}) then {
             _vehicle setVariable [QGVAR(menu), true, true];
         };
@@ -161,6 +161,10 @@ if (hasInterface) then {
     if (!isNil QMODULE(halo)) then {
         [_vehicle] __submodulePP(halo);
     };
+
+    if (!isNil QMODULE(menu_vehicle)) then {
+        [_vehicle] __submodulePP(menu);
+    };
     
     if (!isNil QMODULE(perk)) then {
         [_vehicle] __submodulePP(perk);
@@ -176,10 +180,6 @@ if (hasInterface) then {
     
     if (!isNil QMODULE(vehicle_marker)) then {
         [_vehicle] __submodulePP(vehicle_marker);
-    };
-    
-    if (!isNil QMODULE(vehicle_menu)) then {
-        [_vehicle] __submodulePP(vehicle_menu);
     };
     
     if (!isNil QMODULE(vehicle_protection)) then {

@@ -1,8 +1,7 @@
 /**
  * Revive Module
  *
- * Description: This module enables players to revive eachother, should they
- * be mortally wounded.
+ * Description: This module facilitates revival of incapacitated players.
  */
 
 #define THIS_MODULE revive
@@ -12,18 +11,6 @@ if !(isMultiplayer) exitWith {};
 
 // Amount of damage a revived player will have (medics revive full health)
 GVAR(revive_amount_damage) = 0.4;
-
-// AddAction parameters that need to apply to existing clients & JIP
-GVAR(revive_player_action) = [
-    "Revive" call FUNC(common,RedText),
-    FUNCTION(THIS_MODULE,revive),
-    [],
-    9,
-    false,
-    true,
-    "",
-    "alive _target && {_this != _target} && {_this == vehicle _this} && {_this distance _target < 4} && {_target getVariable 'd_unconscious'} && {!(_target getVariable 'd_reviving')} && {!(_target getVariable 'd_dragging')}"
-];
 
 // Maximum distance to a capable player before an incapacitated player will call for help
 GVAR(revive_distance_exclaim) = 400;

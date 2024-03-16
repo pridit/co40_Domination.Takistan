@@ -92,7 +92,7 @@ if (isServer && {!(GVAR(base_rd) getVariable QGVAR(processing))} && {GVAR(base_r
 
     _vehicle setVariable [QGVAR(built), true, true];
 
-    if (!isNil QMODULE(vehicle_menu)) then {
+    if !(isNil QMODULE(menu) && {isNil QMODULE(menu_vehicle)}) then {
         _vehicle setVariable [QGVAR(menu), false, true];
     };
 
@@ -113,7 +113,7 @@ if (isServer && {!(GVAR(base_rd) getVariable QGVAR(processing))} && {GVAR(base_r
     _vehicle lock false;
     _vehicle allowDamage true;
 
-    if (!isNil QMODULE(vehicle_menu)) then {
+    if (!isNil QMODULE(menu_vehicle)) then {
         _vehicle setVariable [QGVAR(menu), true, true];
     };
 

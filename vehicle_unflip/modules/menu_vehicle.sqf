@@ -13,6 +13,6 @@ if !([_vehicle] call FUNC(THIS_MODULE,valid)) exitWith {false};
 [
     format ["%1Unflip", if !(isNil QMODULE(perk)) then {"Perk: "} else {""}],
     "unflip"
-] call FUNC(vehicle_menu,populate);
+] call FUNC(menu,populate);
 
 true

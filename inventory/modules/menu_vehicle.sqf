@@ -1,5 +1,5 @@
 /**
- * Inventory - Vehicle Menu Submodule
+ * Inventory - Menu Vehicle Submodule
  */
 
 #define THIS_MODULE inventory
@@ -26,7 +26,7 @@ _types = [];
                     (player getVariable (format ["d_inventory_%1_max", _key])) - (player getVariable (format ["d_inventory_%1", _key]))
                 ],
                 format ["%1_%2", QUOTE(THIS_MODULE), _key]
-            ] call FUNC(vehicle_menu,populate)
+            ] call FUNC(menu,populate)
         ] call BIS_fnc_arrayPush;
     };
 
@@ -36,7 +36,7 @@ _types = [];
             [
                 format ["%1: Use", _name],
                 _key
-            ] call FUNC(vehicle_menu,populate)
+            ] call FUNC(menu,populate)
         ] call BIS_fnc_arrayPush;
     };
 } forEach GVAR(inventory_types);

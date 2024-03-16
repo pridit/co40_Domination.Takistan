@@ -26,6 +26,6 @@ _name = (_vehicle getVariable QGVAR(loadout)) select 0;
         count _loadouts
     ],
     "loadout"
-] call FUNC(vehicle_menu,populate);
+] call FUNC(menu,populate);
 
 true

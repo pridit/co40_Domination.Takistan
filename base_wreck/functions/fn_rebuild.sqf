@@ -62,7 +62,7 @@ if ((faction _vehicle) in ["BIS_TK", "BIS_TK_INS"]) then {
     };
 };
 
-if (!isNil QMODULE(vehicle_menu)) then {
+if (!isNil QMODULE(menu_vehicle)) then {
     _vehicle setVariable [QGVAR(menu), false, true];
 };
 

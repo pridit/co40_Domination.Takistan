@@ -215,13 +215,13 @@ class Mission
 				items=2;
 				class Item0
 				{
-					position[]={8264.2334,296.04001,2125.9966};
-					azimut=149.75;
+					position[]={8200.3584,296.13214,2062.9893};
+					azimut=243.11984;
 					special="NONE";
 					id=248;
 					side="WEST";
 					vehicle="US_Delta_Force_Air_Controller_EP1";
-					player="PLAY CDG";
+					player="PLAYER COMMANDER";
 					leader=1;
 					skill=1;
 					text="ARTY1";

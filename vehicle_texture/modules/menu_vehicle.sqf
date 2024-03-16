@@ -33,10 +33,10 @@ _addon = [_texture select 0] call FUNC(THIS_MODULE,addon);
         count (_textures select 1)
     ],
     "texture"
-] call FUNC(vehicle_menu,populate);
+] call FUNC(menu,populate);
 
 if !(_addon) then {
-    DIALOG("X_VEHICLE_MENU_DIALOG", 1100) ctrlSetStructuredText parseText format [
+    DIALOG("X_MENU_DIALOG", 1100) ctrlSetStructuredText parseText format [
         "<t size='0.9'>&#160;</t><br/><t size='1' align='left' valign='bottom'>%1</t>",
         format ["* Requires missing addon: @%1", _name select 1]
     ];

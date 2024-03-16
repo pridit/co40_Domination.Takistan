@@ -73,39 +73,16 @@ if (!isNil QMODULE(vehicle)) then {
 };
 
 if (isMultiplayer) then {
-    ["init_actions", {
-        ["init_actions"] call FUNC(THIS_MODULE,removePerFrame);
+    ["init_action", {
+        ["init_action"] call FUNC(THIS_MODULE,removePerFrame);
 
         {
-            private ["_unit"];
+            if (!isNil QMODULE(menu_player) && {!([player, _x] call BIS_fnc_areEqual)}) then {
+                _action = GVAR(menu_player_action);
+                _action set [0, format ["[%1] %2", "Menu" call FUNC(common,BlueText), name _x] call FUNC(common,GreyText)];
+                _action set [2, _x];
 
-            _unit = _x;
-
-            if !([_x, player] call BIS_fnc_areEqual) then {
-                if !(isNil QMODULE(inventory)) then {
-                    {
-                        _unit addAction _x;
-                    } forEach GVAR(inventory_type_actions);
-                };
-                
-                if (!isNil QMODULE(revive)) then {
-                    _x addAction GVAR(revive_player_action);
-                    
-                    _x addAction [
-                        "Debug" call FUNC(common,GreyText),
-                        FUNCTION(revive,debug),
-                        [],
-                        10,
-                        false,
-                        true,
-                        "",
-                        "_this != _target && {serverCommandAvailable '#logout'}"
-                    ];
-                };
-
-                if (!isNil QMODULE(drag)) then {
-                    _x addAction GVAR(drag_player_action);
-                };
+                _x addAction _action;
             };
         } forEach playableUnits;
     }, 0] call FUNC(THIS_MODULE,addPerFrame);
@@ -210,11 +187,11 @@ if (!isNil QMODULE(ammobox)) then {
             ["construction_mash", "construction\types\mash"],
             ["construction_nest", "construction\types\nest"],
             "damage",
-            "drag",
             ["inventory_medical", "inventory\types\medical"],
             ["inventory_refuel", "inventory\types\refuel"],
             ["inventory_repair", "inventory\types\repair"],
             "medical",
+            ["menu_player", "menu\types\player"],
             "perk",
             "option",
             "revive"

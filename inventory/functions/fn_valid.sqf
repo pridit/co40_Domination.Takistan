@@ -1,27 +1,21 @@
-private ["_type", "_target", "_targetKits", "_targetMax"];
+#include "x_macros.sqf"
+private ["_type", "_target", "_kits", "_max"];
 
-_type = format ["d_inventory_%1", (_this select 0)];
-_target = _this select 1;
+PARAMS_2(_type, _target);
 
-_targetKits = _target getVariable _type;
-_targetMax = _target getVariable (_type + "_max");
+if !([] call FUNC(common,ready)) exitWith {false};
+if !([_target] call FUNC(common,ready)) exitWith {false};
 
-// player must have item
+_type = format ["d_inventory_%1", _type];
+
 if (player getVariable _type < 1) exitWith {false};
+if ([player, _target] call BIS_fnc_areEqual) exitWith {false};
+if !([player, vehicle player] call BIS_fnc_areEqual) exitWith {false};
 
-// player cannot be the target
-if (player == _target) exitWith {false};
+_kits = _target getVariable _type;
+_max = _target getVariable (_type + "_max");
 
-// player must be on foot
-if (player != vehicle player) exitWith {false};
-
-// target must be alive
-if (!alive _target) exitWith {false};
-
-// target already has item
-if (_targetKits > 0) exitWith {false};
-
-// giving an item would exceed maximum capacity
-if (_targetMax > 0 && {(_targetKits + 1) > _targetMax}) exitWith {false};
+if (_kits > 0) exitWith {false}; // target already has item
+if (_max > 0 && {(_kits + 1) > _max}) exitWith {false}; // giving item would exceed maximum capacity
 
 true

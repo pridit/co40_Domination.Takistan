@@ -18,6 +18,6 @@ _packed = _vehicle getVariable QGVAR(packed);
         if (!isNil "_packed" && {_packed}) then {"Unfold"} else {"Fold"}
     ],
     "pack"
-] call FUNC(vehicle_menu,populate);
+] call FUNC(menu,populate);
 
 true

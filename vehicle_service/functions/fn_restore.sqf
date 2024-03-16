@@ -16,7 +16,7 @@ _vehicle setVariable [QGVAR(servicing), true, true];
 [_vehicle, "lock", true] call FUNC(network,mp);
 [_vehicle, "setFuel", 0] call FUNC(network,mp);
 
-if !(isNil QMODULE(vehicle_menu)) then {
+if !(isNil QMODULE(menu_vehicle)) then {
     _vehicle setVariable [QGVAR(menu), false, true];
 };
 
@@ -64,7 +64,7 @@ sleep 2;
 [_vehicle, "setFuel", 1] call FUNC(network,mp);
 [_vehicle, "lock", false] call FUNC(network,mp);
 
-if !(isNil QMODULE(vehicle_menu)) then {
+if !(isNil QMODULE(menu_vehicle)) then {
     _vehicle setVariable [QGVAR(menu), true, true];
 };
 

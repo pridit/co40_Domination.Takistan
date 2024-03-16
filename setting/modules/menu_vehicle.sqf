@@ -1,5 +1,5 @@
 /**
- * Setting Module - Vehicle Menu Submodule
+ * Setting Module - Menu Submodule
  */
 
 #include "x_macros.sqf"
@@ -28,6 +28,6 @@ if ([_respawn select 1, (player getVariable QGVAR(respawn_type)) select 1] call 
 [
     "Setting: Set Respawn",
     format ["[""respawn"", %1]", _respawn]
-] call FUNC(vehicle_menu,populate);
+] call FUNC(menu,populate);
 
 true

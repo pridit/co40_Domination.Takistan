@@ -18,7 +18,7 @@ if (!isNil "_ammobox" && {_ammobox}) then {
 } else {
     _string = "Load";
 
-    DIALOG("X_VEHICLE_MENU_DIALOG", 1100) ctrlSetStructuredText parseText format [
+    DIALOG("X_MENU_DIALOG", 1100) ctrlSetStructuredText parseText format [
         "<t size='0.9'>&#160;</t><br/><t color='#c54a30' size='1' align='left' valign='bottom'>%1</t>",
         "(!) No ammobox loaded"
     ];
@@ -30,6 +30,6 @@ if (!isNil "_ammobox" && {_ammobox}) then {
         _string
     ],
     "ammobox"
-] call FUNC(vehicle_menu,populate);
+] call FUNC(menu,populate);
 
 true

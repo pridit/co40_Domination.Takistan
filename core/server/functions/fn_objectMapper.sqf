@@ -199,14 +199,18 @@ if !(isNil QMODULE(tent)) then {
         if (!isNil "_damage") then {_newObj setDamage _damage;};
 
         if (_newObj isKindOf "LandVehicle") then {
-            if ([faction _newObj, "BIS_US"] call BIS_fnc_areEqual && {!(_newObj isKindOf "StaticWeapon")}) then {
+            if ([faction _newObj, "BIS_US"] call BIS_fnc_areEqual) then {
                 _newObj lock true;
-                _newObj allowCrewInImmobile true;
-            
-                _newObj addEventHandler ["Fired", {(_this select 0) setVehicleAmmo 1}];
+
+                if !(_newObj isKindOf "StaticWeapon") then {
+                    _newObj allowCrewInImmobile true;
+
+                    _newObj addEventHandler ["Fired", {(_this select 0) setVehicleAmmo 1}];
+                };
+
                 _newObj addEventHandler ["HandleDamage", {0}];
 
-                if !(isNil QMODULE(vehicle_menu)) then {
+                if !(isNil QMODULE(menu_vehicle)) then {
                     _newObj setVariable [QGVAR(menu), false, true];
                 };
             };

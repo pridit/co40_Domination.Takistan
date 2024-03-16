@@ -21,6 +21,6 @@ _deployed = (_vehicle getVariable QGVAR(deployed)) select 0;
         if (!isNil "_deployed" && {_deployed}) then {"Undeploy"} else {"Deploy"}
     ],
     format ["[""deploy"", ""%1""]", toLower (_type select 1)]
-] call FUNC(vehicle_menu,populate);
+] call FUNC(menu,populate);
 
 true
